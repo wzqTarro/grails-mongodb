@@ -1,0 +1,7 @@
+import center.report.ReportGroups
+
+model {
+	ReportGroups reportGroups
+}
+
+json tmpl.reportGroups(reportGroups)

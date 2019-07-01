@@ -1,0 +1,7 @@
+import center.report.Report
+
+model {
+	Report report
+}
+
+json tmpl.report(report)

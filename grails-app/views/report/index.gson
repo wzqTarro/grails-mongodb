@@ -1,0 +1,8 @@
+import center.report.Report
+
+model {
+	Iterable<Report> reportList
+}
+
+json tmpl.report(reportList ?: [])
+

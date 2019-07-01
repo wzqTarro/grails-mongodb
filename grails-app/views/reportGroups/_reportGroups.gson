@@ -1,0 +1,7 @@
+import center.report.ReportGroups
+
+model {
+	ReportGroups reportGroups
+}
+
+json g.render(reportGroups, [resolveTemplate: false])

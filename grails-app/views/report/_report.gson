@@ -1,0 +1,7 @@
+import com.zcareze.report.Report
+
+model {
+	Report report
+}
+
+json g.render(report, [resolveTemplate: false])

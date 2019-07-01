@@ -1,0 +1,7 @@
+import center.report.ReportDatasource
+
+model {
+	ReportDatasource reportDatasource
+}
+
+json g.render(reportDatasource, [resolveTemplate: false])

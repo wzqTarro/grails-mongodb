@@ -1,0 +1,92 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        maven { url "https://repo.grails.org/grails/core" }
+    }
+    dependencies {
+        classpath "org.grails:grails-gradle-plugin:$grailsVersion"
+        classpath "org.grails.plugins:views-gradle:1.2.9"
+        classpath "gradle.plugin.com.sourcemuse.gradle.plugin:GradleMongoPlugin:1.0.7"
+    }
+}
+
+
+version "0.1"
+group "center.report"
+
+apply plugin:"eclipse"
+apply plugin:"idea"
+apply plugin:"war"
+apply plugin:"org.grails.grails-web"
+apply plugin:"org.grails.plugins.views-markup"
+apply plugin:"org.grails.plugins.views-json"
+apply plugin: "com.sourcemuse.mongo"
+
+//dependencyManagement {
+//    imports {
+//        mavenBom "org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion"
+//    }
+//    applyMavenExclusions false
+//}
+
+repositories {
+    mavenLocal()
+    maven { url "https://repo.grails.org/grails/core" }
+}
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-logging"
+    compile "org.springframework.boot:spring-boot-autoconfigure"
+    compile "org.grails:grails-core"
+    compile "org.springframework.boot:spring-boot-starter-actuator"
+    compile "org.springframework.boot:spring-boot-starter-tomcat"
+//    compile "org.springframework.cloud:spring-cloud-starter-openfeign"
+//    compile "org.springframework.cloud:spring-cloud-starter-netflix-hystrix"
+//    compile "org.springframework.cloud:spring-cloud-starter-netflix-eureka-client"
+    compile "org.grails:grails-plugin-url-mappings"
+    compile "org.grails:grails-plugin-rest"
+    compile "org.grails:grails-plugin-codecs"
+    compile "org.grails:grails-plugin-interceptors"
+    compile "org.grails:grails-plugin-services"
+    compile "org.grails:grails-plugin-datasource"
+    compile "org.grails:grails-plugin-databinding"
+    compile "org.grails:grails-web-boot"
+    compile "org.grails:grails-logging"
+    compile "org.grails.plugins:cache"
+    compile "org.grails.plugins:async"
+    compile "org.grails.plugins:events"
+    compile "org.grails.plugins:views-markup"
+    compile "org.grails.plugins:mongodb"
+    compile "org.grails.plugins:views-json"
+    compile "org.grails.plugins:views-json-templates"
+    console "org.grails:grails-console"
+    profile "org.grails.profiles:rest-api"
+//    provided "org.grails.plugins:embedded-mongodb:1.0.2"
+    provided "org.apache.commons:commons-compress:1.14"
+    provided "commons-io:commons-io:2.6"
+    provided "net.java.dev.jna:jna-platform:4.2.2"
+    testCompile "org.grails:grails-gorm-testing-support"
+    testCompile "org.grails:grails-test-mixins:3.3.0"
+    testCompile "org.grails:grails-datastore-rest-client"
+    testCompile "org.grails:grails-web-testing-support"
+//    testCompile "io.github.openfeign:feign-httpclient"
+//    testCompile "io.github.openfeign:feign-gson"
+}
+
+bootRun {
+    jvmArgs('-Dspring.output.ansi.enabled=always')
+    addResources = true
+    String springProfilesActive = 'spring.profiles.active'
+    systemProperty springProfilesActive, System.getProperty(springProfilesActive)
+//    runWithMongoDb = true
+}
+
+tasks.withType(Test) {
+    jvmArgs('-Dfile.encoding=utf-8')
+//    runWithMongoDb = true
+}
+
+mongo {
+    logging 'console'
+    mongoVersion "3.6-LATEST"
+}

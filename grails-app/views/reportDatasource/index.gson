@@ -1,0 +1,8 @@
+import center.report.ReportDatasource
+
+model {
+	Iterable<ReportDatasource> reportDatasourceList
+}
+
+json tmpl.reportDatasource(reportDatasourceList ?: [])
+

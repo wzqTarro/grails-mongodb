@@ -1,0 +1,8 @@
+import center.report.ReportModuleInput
+
+model {
+	Iterable<ReportModuleInput> reportModuleInputList
+}
+
+json tmpl.reportModuleInput(reportModuleInputList ?: [])
+

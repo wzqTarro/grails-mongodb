@@ -1,0 +1,7 @@
+import center.report.ReportModule
+
+model {
+	ReportModule reportModule
+}
+
+json g.render(reportModule, [resolveTemplate: false])
